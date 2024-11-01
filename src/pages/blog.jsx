@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import "./css/blog.css";
 import Navbar from "../componet/navbar";
+import Footer from "../componet/footer";
 
 const BlogPage = () => {
   const articles = [
@@ -39,9 +40,7 @@ const BlogPage = () => {
     <>
       {/* Navbar */}
       <Navbar style={{ position: "fixed", top: 0, left: 0, right: 0 }} />
-
-      <Container maxWidth="md" sx={{ mt: 10 }}>
-        {" "}
+      <Container maxWidth="md" sx={{ mt: 10 }} style={{ marginBottom: "5%" }}>
         {/* Mengubah mt untuk memberi ruang bagi Navbar yang tetap */}
         {/* Gambar Header dan Konten */}
         <Card sx={{ mb: 5 }} className="card-header">
@@ -97,6 +96,8 @@ const BlogPage = () => {
           ))}
         </Grid>
       </Container>
+      {/* Footer */}
+      <Footer sx={{ mt: 5 }} /> {/* Add margin-top to Footer */}
     </>
   );
 };

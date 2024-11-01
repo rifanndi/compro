@@ -1,3 +1,4 @@
+// Navbar.js
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../img/logo.png";
@@ -9,7 +10,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
 import hamburger from "../img/hamburger.svg";
 
 const Navbar = () => {
@@ -55,21 +55,23 @@ const Navbar = () => {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component={Link} to="/products">
+          <ListItemButton onClick={handleDropdownClick}>
             <ListItemText primary="PRODUK" />
           </ListItemButton>
         </ListItem>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="PAPAN PLAFON PVC" />
-          </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="LIST PLAFON PVC" />
-          </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="ORNAMEN PVC" />
-          </ListItemButton>
-        </List>
+        {dropdownOpen && (
+          <List component="div" disablePadding>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/papan">
+              <ListItemText primary="PAPAN PLAFON PVC" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/list-plafon">
+              <ListItemText primary="LIST PLAFON PVC" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/ornamen">
+              <ListItemText primary="ORNAMEN PVC" />
+            </ListItemButton>
+          </List>
+        )}
         <ListItem disablePadding>
           <ListItemButton component={Link} to="/blog">
             <ListItemText primary="BLOG" />
@@ -177,7 +179,7 @@ const Navbar = () => {
                 </li>
                 <li style={{ marginBottom: "10px" }}>
                   <Link
-                    to="/products#list-plafon"
+                    to="/list-plafon"
                     style={{ textDecoration: "none", color: "#000" }}
                   >
                     LIST PLAFON PVC
@@ -185,7 +187,7 @@ const Navbar = () => {
                 </li>
                 <li style={{ marginBottom: "10px" }}>
                   <Link
-                    to="/papan"
+                    to="/ornamen"
                     style={{ textDecoration: "none", color: "#000" }}
                   >
                     ORNAMEN PVC
